@@ -1,0 +1,15 @@
+[themeMode="light"] {
+  --bg-color: #f0f0f0;
+  --text-color: #333333;
+  --navLink-hover: #ffffff;
+  --border-color: #333333;
+  --error-color: rgb(227, 100, 100);
+}
+
+[themeMode="dark"] {
+  --bg-color: #28292c;
+  --text-color: #ecebebf7;
+  --navLink-hover: #111111;
+  --border-color: #f0f0f0;
+  --error-color: rgb(181, 87, 87);
+}

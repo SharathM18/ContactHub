@@ -1,0 +1,39 @@
+.navbar_container {
+  width: 100%;
+  padding: 0 50px;
+}
+
+.nav_links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav_link {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav_link li {
+  padding: 12px 15px;
+  color: var(--text-color);
+  font-size: var(--text-base);
+  font-weight: 500;
+}
+
+.isActive {
+  background-color: var(--navLink-hover);
+  transition: background-color 400ms ease 0s;
+}
+
+.logo_title a {
+  color: var(--text-color);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+}
+
+.theme_icon {
+  padding-left: 10px;
+}

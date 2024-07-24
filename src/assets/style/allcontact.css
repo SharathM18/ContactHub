@@ -1,0 +1,52 @@
+.table_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.contactlist_table,
+.table_row th,
+.table_row td {
+  border: 1.5px solid var(--border-color);
+  border-collapse: collapse;
+  padding: 0.25em 0.5em;
+  color: var(--text-color);
+}
+
+.table_row th {
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.table_row td.name-column,
+.table_row td.email-column {
+  text-align: left;
+}
+
+.contactlist_table th.name-column,
+.contactlist_table td.name-column {
+  width: 210px;
+}
+
+.contactlist_table th.email-column,
+.contactlist_table td.email-column {
+  width: 250px;
+}
+
+.contactlist_table th.phone-column,
+.contactlist_table td.phone-column {
+  width: 180px;
+}
+
+.contactlist_table th.action-column,
+.contactlist_table td.action-column {
+  width: 140px;
+}
+
+.no_contact_found_msg {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-color);
+  text-align: center;
+  padding: 40px 0;
+}

@@ -1,0 +1,14 @@
+.logout_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 150px 0;
+}
+
+.logout_msg {
+  color: var(--text-color);
+  font-family: var(--text-base);
+  font-weight: 500;
+}

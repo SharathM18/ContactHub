@@ -1,0 +1,26 @@
+.nfp_container {
+  width: 100%;
+  height: calc(100vh - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nfp_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.nfp_code {
+  font-size: 6rem;
+  color: rosybrown;
+}
+
+.nfp_btn {
+  border: 1.5px solid black;
+  border-radius: 8px;
+  padding: 0.5em 1em;
+}

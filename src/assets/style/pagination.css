@@ -1,0 +1,24 @@
+.pagination_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  align-items: center;
+}
+
+.pagination_btn {
+  padding: 0.2em 0.6em;
+  font-size: var(--text-sm);
+  border: 1.5px solid var(--border-color);
+  letter-spacing: 0.25px;
+  font-family: var(--text-font-family);
+  margin: 0 10px;
+  color: var(--text-color);
+}
+
+.display_page_no {
+  color: var(--text-color);
+  font-family: var(--text-font-family);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
