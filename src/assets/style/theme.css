@@ -1,14 +1,16 @@
 [themeMode="light"] {
   --bg-color: #f0f0f0;
-  --text-color: #333333;
+  --text-color: hsl(0, 0%, 20%);
+  --text-sub-color: #323232e6;
   --navLink-hover: #ffffff;
-  --border-color: #333333;
+  --border-color: #4b4a4a;
   --error-color: rgb(227, 100, 100);
 }
 
 [themeMode="dark"] {
   --bg-color: #28292c;
   --text-color: #ecebebf7;
+  --text-sub-color: #a09f9f;
   --navLink-hover: #232323f4;
   --border-color: #f0f0f0;
   --error-color: rgb(181, 87, 87);

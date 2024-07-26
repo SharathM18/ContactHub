@@ -2,13 +2,18 @@ import "../../assets/style/addcontact.css";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Loading from "../../../utils/Loading";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
 import { db, storage } from "../../firebase/config";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { useLocation, useNavigate } from "react-router-dom";
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytes,
+} from "firebase/storage";
 
 const schema = z.object({
   photo: z.instanceof(FileList).optional(),
@@ -26,15 +31,20 @@ const AddContact = () => {
 
   const userDetails = useSelector((state) => state.authSlice.userDetails);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const [newImageAdded, setNewImageAdded] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
+    setValue,
   } = useForm({ resolver: zodResolver(schema) });
 
   const onImageChange = (e) => {
+    setNewImageAdded(true);
     const file = e.target.files[0];
     if (file) {
       const previewURL = URL.createObjectURL(file);
@@ -42,9 +52,26 @@ const AddContact = () => {
     }
   };
 
+  const contactToEdit = location.state?.contact || null;
+
+  useEffect(() => {
+    if (contactToEdit) {
+      setValue("name", contactToEdit.name);
+      setValue("email", contactToEdit.email);
+      setValue("phone", contactToEdit.phone);
+      setImagePreviewURL(contactToEdit.imageURL);
+    }
+  }, [contactToEdit]);
+
   const onSubmit = async (data) => {
     try {
-      let imageURL = "";
+      if (newImageAdded && contactToEdit && contactToEdit.imageURL) {
+        const previousImageRef = ref(storage, contactToEdit.imageURL);
+        await deleteObject(previousImageRef);
+      }
+
+      let imageURL = contactToEdit ? contactToEdit.imageURL : "";
+
       if (data.photo && data.photo[0]) {
         const imageRef = ref(
           storage,
@@ -54,12 +81,24 @@ const AddContact = () => {
         imageURL = await getDownloadURL(snapshot.ref);
       }
 
-      await addDoc(collection(db, `users/${userDetails.uid}/contacts/`), {
-        imageURL: imageURL || "",
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-      });
+      if (contactToEdit) {
+        await updateDoc(
+          doc(db, `users/${userDetails.uid}/contacts`, contactToEdit.id),
+          {
+            imageURL: imageURL || "",
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+          }
+        );
+      } else {
+        await addDoc(collection(db, `users/${userDetails.uid}/contacts/`), {
+          imageURL: imageURL || "",
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+        });
+      }
 
       navigate("/allcontacts");
       reset();
@@ -137,7 +176,7 @@ const AddContact = () => {
           </div>
 
           <button type="submit" className="btn" disabled={isSubmitting}>
-            {isSubmitting ? <Loading /> : "Save"}
+            {isSubmitting ? <Loading /> : contactToEdit ? "Update" : "Save"}
           </button>
           {error_msgs && <p className="errors_msg">{error_msgs}</p>}
         </form>

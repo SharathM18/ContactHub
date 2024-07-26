@@ -1,14 +1,16 @@
 .logout_container {
   width: 100%;
+  height: calc(100vh - 140px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 150px 0;
+  gap: 10px;
 }
 
 .logout_msg {
   color: var(--text-color);
-  font-family: var(--text-base);
+  font-family: var(--text-lg);
   font-weight: 500;
 }

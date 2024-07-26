@@ -3,7 +3,7 @@ import "../assets/style/pagination.css";
 
 const pagination = ({ contactList, setContacts }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [pagePerContact] = useState(10);
+  const [pagePerContact] = useState(7);
 
   useEffect(() => {
     const lastPageIndex = currentPage * pagePerContact;

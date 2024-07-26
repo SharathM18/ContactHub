@@ -56,7 +56,7 @@ const AllContacts = () => {
   };
 
   const handleEditContact = (contact) => {
-    navigate("/addcontact", { state: contact });
+    navigate("/addcontact", { state: { contact } });
   };
 
   return (

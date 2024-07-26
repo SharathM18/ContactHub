@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import "./App.css";
-import Footer from "./components/Footer";
 import { auth } from "./firebase/config";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
@@ -32,7 +31,6 @@ const App = () => {
         <div>
           <Navbar />
           <Outlet />
-          <Footer />
         </div>
       )}
     </>
