@@ -25,7 +25,7 @@
 
 .contactlist_table th.name-column,
 .contactlist_table td.name-column {
-  width: 210px;
+  width: 300px;
 }
 
 .contactlist_table th.email-column,
@@ -49,4 +49,24 @@
   color: var(--text-color);
   text-align: center;
   padding: 40px 0;
+}
+
+.table_row td {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  text-align: center;
+}
+
+.photo_name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.photo {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border: 1.5px solid var(--border-color);
+  border-radius: 50%;
 }

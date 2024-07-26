@@ -1,0 +1,19 @@
+.errors_msg {
+  text-align: start;
+}
+
+.image_preview {
+  align-self: center;
+}
+
+.image_upload_preview {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border: 1.5px solid var(--border-color);
+  border-radius: 50%;
+}
+
+.form {
+  padding: 0;
+}
