@@ -12,6 +12,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+  font-weight: 600;
 }
 
 .nfp_code {
@@ -25,4 +26,5 @@
   padding: 0.5em 1em;
   letter-spacing: 0.25px;
   font-family: var(--text-font-family);
+  font-weight: 600;
 }
