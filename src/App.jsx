@@ -23,6 +23,7 @@ const App = () => {
 
     return () => unsubscribe();
   }, []);
+
   return (
     <>
       {loading ? (
